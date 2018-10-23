@@ -37,8 +37,25 @@
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Database">
-                <MenuItem Header="Save" />
-                <MenuItem Header="Load" />
+                <MenuItem Header="_Save">
+                    <MenuItem Header="_Append to database"/>
+                    <MenuItem Header="Add or _update" />
+                    <MenuItem Header="_Overwrite database"/>
+                </MenuItem>
+
+                <MenuItem Header="_Load">
+                    <MenuItem Header="_Append to local list" />
+                    <MenuItem Header="Add or _update" />
+                    <MenuItem Header="_Overwrite local list" />
+                </MenuItem>
+                
+                <Separator />
+
+                <MenuItem Header="_Clear">
+                    <MenuItem Header="_Database" />
+                    <MenuItem Header="_Local list" />
+                    <MenuItem Header="_Both" />
+                </MenuItem>
             </MenuItem>
         </Menu>
         <Grid>
@@ -103,4 +120,34 @@
         </Grid>
     </DockPanel>
 </Window>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
