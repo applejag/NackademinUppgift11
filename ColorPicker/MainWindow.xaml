@@ -34,21 +34,21 @@
 
             <Grid Grid.Row="0" Grid.Column="0">
                 <!--<Rectangle Fill="#FFFFFF" Margin="10" Stroke="Black" Width="100" Height="100" />-->
-                <TextBox Text="{Binding RgbCode, Mode=OneWay, Converter={StaticResource Rgb2HtmlConverter}}" Foreground="{Binding ForegroundRgbCode, Mode=OneWay, Converter={StaticResource Rgb2HtmlConverter}}" Background="{Binding Text, RelativeSource={RelativeSource Self}}" IsReadOnly="True" Width="100" Height="100" Margin="10" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                <TextBox Text="{Binding RgbCode, Mode=OneWay, Converter={StaticResource Rgb2HtmlConverter}, ConverterParameter=Hello}" Foreground="{Binding ForegroundRgbCode, Mode=OneWay, Converter={StaticResource Rgb2HtmlConverter}}" Background="{Binding Text, RelativeSource={RelativeSource Self}}" IsReadOnly="True" Width="100" Height="100" Margin="10" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
             </Grid>
-            <StackPanel Grid.Column="1" Grid.Row="0" VerticalAlignment="Center">
-                <DockPanel Margin="10,10,10,0">
-                    <Ellipse Width="22" Height="22" Margin="0,0,10,0" Fill="Red" />
+            <StackPanel Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Margin="0,10,10,10">
+                <DockPanel Margin="0,0,0,10">
+                    <Ellipse Width="22" Height="22" Margin="0,0,10,0" Fill="{Binding RgbCode, Mode=OneWay, Converter={StaticResource Rgb2HtmlConverter}, ConverterParameter=Red}" />
                     <TextBox Width="29" DockPanel.Dock="Left" Text="{Binding RgbCode.Red, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,5,0" VerticalAlignment="Center" />
                     <Slider Maximum="255" Value="{Binding RgbCode.Red}" />
                 </DockPanel>
-                <DockPanel Margin="10,10,10,0">
-                    <Ellipse Width="22" Height="22" Margin="0,0,10,0" Fill="Lime" />
+                <DockPanel Margin="0,0,0,10">
+                    <Ellipse Width="22" Height="22" Margin="0,0,10,0" Fill="{Binding RgbCode, Mode=OneWay, Converter={StaticResource Rgb2HtmlConverter}, ConverterParameter=Green}" />
                     <TextBox Width="29" DockPanel.Dock="Left" Text="{Binding RgbCode.Green, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,5,0" VerticalAlignment="Center" />
                     <Slider Maximum="255" Value="{Binding RgbCode.Green}" />
                 </DockPanel>
-                <DockPanel Margin="10">
-                    <Ellipse Width="22" Height="22" Margin="0,0,10,0" Fill="Blue" />
+                <DockPanel Margin="0,0,0,0">
+                    <Ellipse Width="22" Height="22" Margin="0,0,10,0" Fill="{Binding RgbCode, Mode=OneWay, Converter={StaticResource Rgb2HtmlConverter}, ConverterParameter=Blue}" />
                     <TextBox Width="29" DockPanel.Dock="Left" Text="{Binding RgbCode.Blue, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,5,0" VerticalAlignment="Center" />
                     <Slider Maximum="255" Value="{Binding RgbCode.Blue}" />
                 </DockPanel>

@@ -12,7 +12,24 @@ namespace ColorPicker.Converters
             if (!(value is RGBCode color))
                 throw new NotSupportedException();
 
-            return $"#{color.Red:X2}{color.Green:X2}{color.Blue:X2}";
+            switch (parameter as string)
+            {
+                case "R":
+                case nameof(color.Red):
+                    return $"#{color.Red:X2}0000";
+
+                case "G":
+                case nameof(color.Green):
+                    return $"#00{color.Green:X2}00";
+
+                case "B":
+                case nameof(color.Blue):
+                    return $"#0000{color.Blue:X2}";
+
+                default:
+                    return $"#{color.Red:X2}{color.Green:X2}{color.Blue:X2}";
+            }
+
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
