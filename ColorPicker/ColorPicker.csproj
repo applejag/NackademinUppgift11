@@ -62,6 +62,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\DatabaseCommands.cs" />
+    <Compile Include="Commands\Database\DatabaseBaseCommand.cs" />
+    <Compile Include="Commands\Database\ClearCommand.cs" />
+    <Compile Include="Commands\Database\LoadAddOrUpdateCommand.cs" />
+    <Compile Include="Commands\Database\LoadAppendCommand.cs" />
+    <Compile Include="Commands\Database\SaveAddOrUpdateCommand.cs" />
+    <Compile Include="Commands\Database\LoadOverwriteCommand.cs" />
+    <Compile Include="Commands\Database\SaveOverwriteCommand.cs" />
+    <Compile Include="Commands\Database\SaveAppendCommand.cs" />
     <Compile Include="Commands\RemoveColorCommand.cs" />
     <Compile Include="Commands\AddColorCommand.cs" />
     <Compile Include="Converters\RGB2RGBConverter.cs" />
