@@ -20,7 +20,7 @@ namespace ColorPicker.Commands.Database
         {
             await context.Colors.ForEachAsync(color =>
             {
-                _colors.Add(color);
+                SendToUIThread(() => _colors.Add(color));
             });
         }
     }

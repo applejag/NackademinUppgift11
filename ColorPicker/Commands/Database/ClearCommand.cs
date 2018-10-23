@@ -38,8 +38,7 @@ namespace ColorPicker.Commands.Database
             }
 
             if (target != Target.Database)
-                _colors.Clear();
-            
+                SendToUIThread(() => _colors.Clear());
         }
 
         public enum Target

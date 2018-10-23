@@ -19,7 +19,7 @@ namespace ColorPicker.Commands.Database
 
         public override async Task ExecuteAsync(ColorDbContext context, object parameter)
         {
-            await context.Colors.ForEachAsync(color =>
+            await context.Colors.ForEachAsync(color => SendToUIThread(() =>
             {
                 // Count how many are updated
                 int count = _colors
@@ -30,7 +30,7 @@ namespace ColorPicker.Commands.Database
                 // Add new one if none
                 if (count == 0)
                     _colors.Add(color);
-            });
+            }));
         }
     }
 }

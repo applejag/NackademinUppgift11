@@ -18,11 +18,11 @@ namespace ColorPicker.Commands.Database
 
         public override async Task ExecuteAsync(ColorDbContext context, object parameter)
         {
-            _colors.Clear();
+            SendToUIThread(() => _colors.Clear());
 
             await context.Colors.ForEachAsync(color =>
             {
-                _colors.Add(color);
+                SendToUIThread(() => _colors.Add(color));
             });
         }
     }
