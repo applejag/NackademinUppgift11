@@ -5,7 +5,7 @@ using ColorPicker.Models;
 
 namespace ColorPicker.Converters
 {
-    public class RGB2HTMLConverter : IValueConverter
+    public class RGB2HexConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

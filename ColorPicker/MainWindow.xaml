@@ -6,11 +6,30 @@
         xmlns:local="clr-namespace:ColorPicker"
         xmlns:viewModels="clr-namespace:ColorPicker.ViewModels"
         xmlns:converters="clr-namespace:ColorPicker.Converters"
-        xmlns:commands="clr-namespace:ColorPicker.Commands"
+        xmlns:models="clr-namespace:ColorPicker.Models"
         Title="Color Picker" Height="420" Width="480" MinWidth="360" MinHeight="300">
     <Window.Resources>
         <viewModels:MainViewModel x:Key="MainViewModel"/>
-        <converters:RGB2HTMLConverter x:Key="Rgb2HtmlConverter" />
+        <converters:RGB2HexConverter x:Key="Rgb2HexConverter" />
+        <converters:RGB2RGBConverter x:Key="Rgb2RgbConverter" />
+
+        <DataTemplate x:Key="ColorDataTemplate" DataType="{x:Type models:RGBCode}">
+            <Grid Width="210">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="13*"/>
+                    <ColumnDefinition Width="7*"/>
+                </Grid.ColumnDefinitions>
+
+                <Ellipse Width="22" Height="22" Margin="5,2,5,2" Fill="{Binding Mode=OneWay, Converter={StaticResource Rgb2HexConverter}}" Grid.Column="0" />
+                <TextBox Text="{Binding Mode=OneWay, Converter={StaticResource Rgb2RgbConverter}}" Background="{x:Null}"
+                            BorderThickness="0" IsReadOnly="True" Margin="5" VerticalContentAlignment="Center"
+                            HorizontalContentAlignment="Left" Grid.Column="1" />
+                <TextBox Text="{Binding Mode=OneWay, Converter={StaticResource Rgb2HexConverter}}" Background="{x:Null}"
+                            BorderThickness="0" IsReadOnly="True" Margin="5" VerticalContentAlignment="Center"
+                            HorizontalContentAlignment="Left" Grid.Column="2" />
+            </Grid>
+        </DataTemplate>
     </Window.Resources>
     <Window.DataContext>
         <Binding Source="{StaticResource MainViewModel}" UpdateSourceTrigger="PropertyChanged" />
@@ -34,21 +53,21 @@
 
             <Grid Grid.Row="0" Grid.Column="0">
                 <!--<Rectangle Fill="#FFFFFF" Margin="10" Stroke="Black" Width="100" Height="100" />-->
-                <TextBox Text="{Binding RgbCode, Mode=OneWay, Converter={StaticResource Rgb2HtmlConverter}, ConverterParameter=Hello}" Foreground="{Binding ForegroundRgbCode, Mode=OneWay, Converter={StaticResource Rgb2HtmlConverter}}" Background="{Binding Text, RelativeSource={RelativeSource Self}}" IsReadOnly="True" Width="100" Height="100" Margin="10" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                <TextBox Text="{Binding RgbCode, Mode=OneWay, Converter={StaticResource Rgb2HexConverter}, ConverterParameter=Hello}" Foreground="{Binding ForegroundRgbCode, Mode=OneWay, Converter={StaticResource Rgb2HexConverter}}" Background="{Binding Text, RelativeSource={RelativeSource Self}}" IsReadOnly="True" Width="100" Height="100" Margin="10" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
             </Grid>
             <StackPanel Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Margin="0,10,10,10">
                 <DockPanel Margin="0,0,0,10">
-                    <Ellipse Width="22" Height="22" Margin="0,0,10,0" Fill="{Binding RgbCode, Mode=OneWay, Converter={StaticResource Rgb2HtmlConverter}, ConverterParameter=Red}" />
+                    <Ellipse Width="22" Height="22" Margin="0,0,10,0" Fill="{Binding RgbCode, Mode=OneWay, Converter={StaticResource Rgb2HexConverter}, ConverterParameter=Red}" />
                     <TextBox Width="29" DockPanel.Dock="Left" Text="{Binding RgbCode.Red, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,5,0" VerticalAlignment="Center" />
                     <Slider Maximum="255" Value="{Binding RgbCode.Red}" />
                 </DockPanel>
                 <DockPanel Margin="0,0,0,10">
-                    <Ellipse Width="22" Height="22" Margin="0,0,10,0" Fill="{Binding RgbCode, Mode=OneWay, Converter={StaticResource Rgb2HtmlConverter}, ConverterParameter=Green}" />
+                    <Ellipse Width="22" Height="22" Margin="0,0,10,0" Fill="{Binding RgbCode, Mode=OneWay, Converter={StaticResource Rgb2HexConverter}, ConverterParameter=Green}" />
                     <TextBox Width="29" DockPanel.Dock="Left" Text="{Binding RgbCode.Green, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,5,0" VerticalAlignment="Center" />
                     <Slider Maximum="255" Value="{Binding RgbCode.Green}" />
                 </DockPanel>
                 <DockPanel Margin="0,0,0,0">
-                    <Ellipse Width="22" Height="22" Margin="0,0,10,0" Fill="{Binding RgbCode, Mode=OneWay, Converter={StaticResource Rgb2HtmlConverter}, ConverterParameter=Blue}" />
+                    <Ellipse Width="22" Height="22" Margin="0,0,10,0" Fill="{Binding RgbCode, Mode=OneWay, Converter={StaticResource Rgb2HexConverter}, ConverterParameter=Blue}" />
                     <TextBox Width="29" DockPanel.Dock="Left" Text="{Binding RgbCode.Blue, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,5,0" VerticalAlignment="Center" />
                     <Slider Maximum="255" Value="{Binding RgbCode.Blue}" />
                 </DockPanel>
@@ -72,8 +91,16 @@
                         </Button.Content>
                     </Button>
                 </StackPanel>
-                <ListBox Margin="10" ItemsSource="{Binding ColorList}" SelectedIndex="{Binding SelectedColorIndex}" />
+                <ListBox Margin="10" ItemsSource="{Binding ColorList}" SelectedIndex="{Binding SelectedColorIndex}" ItemTemplate="{StaticResource ColorDataTemplate}" HorizontalContentAlignment="Stretch"
+                             ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel IsItemsHost="True" Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                </ListBox>
             </DockPanel>
         </Grid>
     </DockPanel>
 </Window>
+

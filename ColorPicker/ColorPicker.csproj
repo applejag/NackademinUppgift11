@@ -57,7 +57,8 @@
     </ApplicationDefinition>
     <Compile Include="Commands\RemoveColorCommand.cs" />
     <Compile Include="Commands\AddColorCommand.cs" />
-    <Compile Include="Converters\RGB2HTMLConverter.cs" />
+    <Compile Include="Converters\RGB2RGBConverter.cs" />
+    <Compile Include="Converters\RGB2HexConverter.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
