@@ -66,6 +66,7 @@
     <Compile Include="Commands\AddColorCommand.cs" />
     <Compile Include="Converters\RGB2RGBConverter.cs" />
     <Compile Include="Converters\RGB2HexConverter.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ColorDbContext.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Page Include="MainWindow.xaml">
