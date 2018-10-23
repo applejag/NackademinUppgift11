@@ -5,9 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ColorPicker"
         xmlns:viewModels="clr-namespace:ColorPicker.ViewModels"
+        xmlns:converters="clr-namespace:ColorPicker.Converters"
         Title="Color Picker" Height="420" Width="480" MinWidth="360" MinHeight="300">
     <Window.Resources>
         <viewModels:MainViewModel x:Key="MainViewModel"/>
+        <converters:RGB2HTMLConverter x:Key="Rgb2HtmlConverter" />
     </Window.Resources>
     <Window.DataContext>
         <Binding Source="{StaticResource MainViewModel}" UpdateSourceTrigger="PropertyChanged" />
@@ -31,7 +33,7 @@
 
             <Grid Grid.Row="0" Grid.Column="0">
                 <!--<Rectangle Fill="#FFFFFF" Margin="10" Stroke="Black" Width="100" Height="100" />-->
-                <TextBox Text="#FFFFFF" Background="#FFFFFF" IsReadOnly="True" Width="100" Height="100" Margin="10" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                <TextBox Text="{Binding RgbCode, Mode=OneWay, Converter={StaticResource Rgb2HtmlConverter}}" Foreground="{Binding ForegroundRgbCode, Mode=OneWay, Converter={StaticResource Rgb2HtmlConverter}}" Background="{Binding Text, RelativeSource={RelativeSource Self}}" IsReadOnly="True" Width="100" Height="100" Margin="10" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
             </Grid>
             <StackPanel Grid.Column="1" Grid.Row="0" VerticalAlignment="Center">
                 <DockPanel Margin="10,10,10,0">
