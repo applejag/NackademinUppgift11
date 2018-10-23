@@ -6,13 +6,13 @@ namespace ColorPicker.Models
 {
     public class RGBCode : INotifyPropertyChanged
     {
-        private uint _id;
+        private int _id;
 
         private byte _blue;
         private byte _green;
         private byte _red;
 
-        public uint Id
+        public int Id
         {
             get => _id;
             set { _id = value; OnPropertyChanged(); }
