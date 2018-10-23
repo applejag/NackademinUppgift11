@@ -5,8 +5,68 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ColorPicker"
         mc:Ignorable="d"
-        Title="Color Picker" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Color Picker" Height="420" Width="480" MinWidth="360" MinHeight="300">
+    <Window.Resources>
+    </Window.Resources>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Database">
+                <MenuItem Header="Save" />
+                <MenuItem Header="Load" />
+            </MenuItem>
+        </Menu>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Row="0" Grid.Column="0">
+                <!--<Rectangle Fill="#FFFFFF" Margin="10" Stroke="Black" Width="100" Height="100" />-->
+                <TextBox Text="#FFFFFF" Background="#FFFFFF" IsReadOnly="True" Width="100" Height="100" Margin="10" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+            </Grid>
+            <StackPanel Grid.Column="1" Grid.Row="0" VerticalAlignment="Center">
+                <DockPanel Margin="10,10,10,0">
+                    <Ellipse Width="22" Height="22" Margin="0,0,10,0" Fill="Red" />
+                    <TextBox DockPanel.Dock="Left" Text="255" Margin="0,0,5,0" VerticalAlignment="Center" />
+                    <Slider Maximum="255" Value="255" />
+                </DockPanel>
+                <DockPanel Margin="10,10,10,0">
+                    <Ellipse Width="22" Height="22" Margin="0,0,10,0" Fill="Lime" />
+                    <TextBox DockPanel.Dock="Left" Text="255" Margin="0,0,5,0" VerticalAlignment="Center" />
+                    <Slider Maximum="255" Value="255" />
+                </DockPanel>
+                <DockPanel Margin="10">
+                    <Ellipse Width="22" Height="22" Margin="0,0,10,0" Fill="Blue" />
+                    <TextBox DockPanel.Dock="Left" Text="255" Margin="0,0,5,0" VerticalAlignment="Center" />
+                    <Slider Maximum="255" Value="255" />
+                </DockPanel>
+            </StackPanel>
+            <DockPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="10,10,10,0">
+                    <Button Margin="0,0,10,0">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="5,1,5,0" VerticalAlignment="Center" FontFamily="{StaticResource FontAwesomeSolid}">&#xf067;</TextBlock>
+                                <TextBlock Margin="0,0,5,0">Add</TextBlock>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                    <Button Margin="0,0,10,0">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="5,1,5,0" VerticalAlignment="Center" FontFamily="{StaticResource FontAwesomeRegular}">&#xf2ed;</TextBlock>
+                                <TextBlock Margin="0,0,5,0">Remove</TextBlock>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+                <ListBox Margin="10" />
+            </DockPanel>
+        </Grid>
+    </DockPanel>
 </Window>

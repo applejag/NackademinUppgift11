@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:ColorPicker"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <FontFamily x:Key="FontAwesomeSolid">/Assets/Fonts/Font Awesome 5 Free-Solid-900.otf#Font Awesome 5 Free Solid</FontFamily>
+        <FontFamily x:Key="FontAwesomeRegular">/Assets/Fonts/Font Awesome 5 Free-Regular-400.otf#Font Awesome 5 Free Regular</FontFamily>
     </Application.Resources>
 </Application>
