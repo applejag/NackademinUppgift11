@@ -16,10 +16,10 @@ namespace ColorPicker.ViewModels
         public RGBCode ForegroundRgbCode => GetForegroundRgbCode();
         public ObservableCollection<RGBCode> ColorList { get; } = new ObservableCollection<RGBCode>
         {
-            new RGBCode(177, 161, 96),
-            new RGBCode(159, 87, 108),
-            new RGBCode(71, 131, 89),
-            new RGBCode(82, 73, 122),
+            new RGBCode(174, 17, 65),
+            new RGBCode(147, 124, 75),
+            new RGBCode(51, 77, 153),
+            new RGBCode(129, 229, 46),
         };
 
         public int SelectedColorIndex {
