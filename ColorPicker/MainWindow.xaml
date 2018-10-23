@@ -119,8 +119,8 @@
                         </Button.Content>
                     </Button>
                 </StackPanel>
-                <ListBox Margin="10" ItemsSource="{Binding ColorList}" SelectedIndex="{Binding SelectedColorIndex}" ItemTemplate="{StaticResource ColorDataTemplate}" HorizontalContentAlignment="Stretch"
-                             ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListBox Margin="10" ItemsSource="{Binding ColorList}" SelectedIndex="{Binding SelectedColorIndex}" ItemTemplate="{StaticResource ColorDataTemplate}"
+                         ScrollViewer.VerticalScrollBarVisibility="Disabled">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel IsItemsHost="True" Orientation="Vertical" />
