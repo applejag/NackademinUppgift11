@@ -29,7 +29,7 @@ namespace ColorPicker.Models
             : this(255, 255, 255)
         { }
 
-        public RGBCode(byte blue, byte green, byte red)
+        public RGBCode(byte red, byte green, byte blue)
         {
             _blue = blue;
             _green = green;
