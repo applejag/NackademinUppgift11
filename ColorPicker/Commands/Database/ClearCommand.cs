@@ -23,7 +23,7 @@ namespace ColorPicker.Commands.Database
         private static Target ParseParameter(object parameter)
         {
             if (!Enum.TryParse(parameter as string, true, out Target target))
-                throw new ArgumentException($"Invalid clear target: <{parameter?.ToString() ?? "null"}>. Possible values: {string.Join(",", Enum.GetNames(typeof(Target)))}", nameof(parameter));
+                throw new ArgumentException($"Invalid clear target: <{parameter?.ToString() ?? "null"}>. Possible values: {string.Join(", ", Enum.GetNames(typeof(Target)))}", nameof(parameter));
             return target;
         }
 

@@ -29,6 +29,7 @@ namespace ColorPicker.ViewModels
 
         public AddColorCommand AddColorCommand { get; }
         public RemoveColorCommand RemoveColorCommand { get; }
+        public DatabaseCommands DatabaseCommands { get; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -36,6 +37,7 @@ namespace ColorPicker.ViewModels
         {
             AddColorCommand = new AddColorCommand(this);
             RemoveColorCommand = new RemoveColorCommand(this);
+            DatabaseCommands = new DatabaseCommands(ColorList);
 
             RgbCode.PropertyChanged += (o, args) =>
             {

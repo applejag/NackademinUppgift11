@@ -36,25 +36,25 @@
     </Window.DataContext>
     <DockPanel>
         <Menu DockPanel.Dock="Top">
-            <MenuItem Header="Database">
+            <MenuItem Header="Database" DataContext="{Binding DatabaseCommands}">
                 <MenuItem Header="_Save">
-                    <MenuItem Header="_Append to database"/>
-                    <MenuItem Header="Add or _update" />
-                    <MenuItem Header="_Overwrite database"/>
+                    <MenuItem Header="_Append to database" Command="{Binding SaveAppend}" />
+                    <MenuItem Header="Add or _update" Command="{Binding SaveAddOrUpdate}" />
+                    <MenuItem Header="_Overwrite database" Command="{Binding SaveOverwrite}" />
                 </MenuItem>
 
                 <MenuItem Header="_Load">
-                    <MenuItem Header="_Append to local list" />
-                    <MenuItem Header="Add or _update" />
-                    <MenuItem Header="_Overwrite local list" />
+                    <MenuItem Header="_Append to local list" Command="{Binding LoadAppend}" />
+                    <MenuItem Header="Add or _update" Command="{Binding LoadAddOrUpdate}" />
+                    <MenuItem Header="_Overwrite local list" Command="{Binding LoadOverwrite}" />
                 </MenuItem>
                 
                 <Separator />
 
                 <MenuItem Header="_Clear">
-                    <MenuItem Header="_Database" />
-                    <MenuItem Header="_Local list" />
-                    <MenuItem Header="_Both" />
+                    <MenuItem Header="_Database" Command="{Binding Clear}" CommandParameter="Database" />
+                    <MenuItem Header="_Local list" Command="{Binding Clear}" CommandParameter="Local" />
+                    <MenuItem Header="_Both" Command="{Binding Clear}" CommandParameter="Both" />
                 </MenuItem>
             </MenuItem>
         </Menu>
