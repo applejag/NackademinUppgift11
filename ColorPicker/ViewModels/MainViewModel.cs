@@ -3,13 +3,14 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using ColorPicker.Annotations;
+using ColorPicker.Commands;
 using ColorPicker.Models;
 
 namespace ColorPicker.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
     {
-        private int _selectedColorIndex;
+        private int _selectedColorIndex = -1;
 
         public RGBCode RgbCode { get; } = new RGBCode();
         public RGBCode ForegroundRgbCode => GetForegroundRgbCode();
@@ -20,10 +21,16 @@ namespace ColorPicker.ViewModels
             set { _selectedColorIndex = value; OnPropertyChanged(); }
         }
 
+        public AddColorCommand AddColorCommand { get; }
+        public RemoveColorCommand RemoveColorCommand { get; }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public MainViewModel()
         {
+            AddColorCommand = new AddColorCommand(this);
+            RemoveColorCommand = new RemoveColorCommand(this);
+
             RgbCode.PropertyChanged += (o, args) =>
             {
                 OnPropertyChanged(nameof(RgbCode));

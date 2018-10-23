@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:ColorPicker"
         xmlns:viewModels="clr-namespace:ColorPicker.ViewModels"
         xmlns:converters="clr-namespace:ColorPicker.Converters"
+        xmlns:commands="clr-namespace:ColorPicker.Commands"
         Title="Color Picker" Height="420" Width="480" MinWidth="360" MinHeight="300">
     <Window.Resources>
         <viewModels:MainViewModel x:Key="MainViewModel"/>
@@ -53,8 +54,8 @@
                 </DockPanel>
             </StackPanel>
             <DockPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
-                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="10,10,10,0">
-                    <Button Margin="0,0,10,0">
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="10,0,10,0">
+                    <Button Margin="0,0,10,0" Command="{Binding AddColorCommand}">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Margin="5,1,5,0" VerticalAlignment="Center" FontFamily="{StaticResource FontAwesomeSolid}">&#xf067;</TextBlock>
@@ -62,7 +63,7 @@
                             </StackPanel>
                         </Button.Content>
                     </Button>
-                    <Button Margin="0,0,10,0">
+                    <Button Margin="0,0,10,0" Command="{Binding RemoveColorCommand}">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Margin="5,1,5,0" VerticalAlignment="Center" FontFamily="{StaticResource FontAwesomeRegular}">&#xf2ed;</TextBlock>
@@ -71,7 +72,7 @@
                         </Button.Content>
                     </Button>
                 </StackPanel>
-                <ListBox Margin="10" ItemsSource="{Binding ColorList, Converter={StaticResource Rgb2HtmlConverter}}" SelectedIndex="{Binding SelectedColorIndex}" />
+                <ListBox Margin="10" ItemsSource="{Binding ColorList}" SelectedIndex="{Binding SelectedColorIndex}" />
             </DockPanel>
         </Grid>
     </DockPanel>
