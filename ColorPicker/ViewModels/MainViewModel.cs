@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using ColorPicker.Annotations;
@@ -8,14 +9,31 @@ namespace ColorPicker.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
     {
+        private int _selectedColorIndex;
+
         public RGBCode RgbCode { get; } = new RGBCode();
         public RGBCode ForegroundRgbCode => GetForegroundRgbCode();
+        public ObservableCollection<RGBCode> ColorList { get; } = new ObservableCollection<RGBCode>();
+
+        public int SelectedColorIndex {
+            get => _selectedColorIndex;
+            set { _selectedColorIndex = value; OnPropertyChanged(); }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public MainViewModel()
         {
-            RgbCode.PropertyChanged += RgbCodeOnPropertyChanged;
+            RgbCode.PropertyChanged += (o, args) =>
+            {
+                OnPropertyChanged(nameof(RgbCode));
+                OnPropertyChanged(nameof(ForegroundRgbCode));
+            };
+
+            ((INotifyPropertyChanged)ColorList).PropertyChanged += (o, args) =>
+            {
+                OnPropertyChanged(nameof(ColorList));
+            };
         }
 
         private RGBCode GetForegroundRgbCode()
@@ -26,14 +44,8 @@ namespace ColorPicker.ViewModels
             float brightness = (0.2126f * r + 0.7152f * g + 0.0722f * b);
 
             return brightness < 0.75f
-                ? new RGBCode(255,255,255)
+                ? new RGBCode(255, 255, 255)
                 : new RGBCode(47, 79, 79);
-        }
-
-        private void RgbCodeOnPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            OnPropertyChanged(nameof(RgbCode));
-            OnPropertyChanged(nameof(ForegroundRgbCode));
         }
 
         [NotifyPropertyChangedInvocator]
