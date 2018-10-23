@@ -21,7 +21,11 @@
                     <ColumnDefinition Width="7*"/>
                 </Grid.ColumnDefinitions>
 
-                <Ellipse Width="22" Height="22" Margin="5,2,5,2" Fill="{Binding Mode=OneWay, Converter={StaticResource Rgb2HexConverter}}" Grid.Column="0" />
+                <Grid Width="22" Height="22" Margin="5,2,5,2" >
+                    <Ellipse Fill="{Binding Mode=OneWay, Converter={StaticResource Rgb2HexConverter}}" />
+                    <TextBlock Name="databaseIcon"  Text="&#xf1c0;" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource FontAwesomeSolid}"
+                               Foreground="{Binding Converter={StaticResource Rgb2HexConverter}, ConverterParameter=Foreground}" Visibility="Visible" />
+                </Grid>
                 <TextBox Text="{Binding Mode=OneWay, Converter={StaticResource Rgb2RgbConverter}}" Background="{x:Null}"
                             BorderThickness="0" IsReadOnly="True" Margin="5" VerticalContentAlignment="Center"
                             HorizontalContentAlignment="Left" Grid.Column="1" />
@@ -29,6 +33,13 @@
                             BorderThickness="0" IsReadOnly="True" Margin="5" VerticalContentAlignment="Center"
                             HorizontalContentAlignment="Left" Grid.Column="2" />
             </Grid>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding Id}" Value="0">
+                    <DataTrigger.Setters>
+                        <Setter TargetName="databaseIcon" Property="Visibility" Value="Hidden" />
+                    </DataTrigger.Setters>
+                </DataTrigger>
+            </DataTemplate.Triggers>
         </DataTemplate>
     </Window.Resources>
     <Window.DataContext>
@@ -48,7 +59,7 @@
                     <MenuItem Header="Add or _update" Command="{Binding LoadAddOrUpdate}" />
                     <MenuItem Header="_Overwrite local list" Command="{Binding LoadOverwrite}" />
                 </MenuItem>
-                
+
                 <Separator />
 
                 <MenuItem Header="_Clear">
