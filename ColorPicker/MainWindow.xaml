@@ -70,7 +70,7 @@
 
             <Grid Grid.Row="0" Grid.Column="0">
                 <!--<Rectangle Fill="#FFFFFF" Margin="10" Stroke="Black" Width="100" Height="100" />-->
-                <TextBox Text="{Binding RgbCode, Mode=OneWay, Converter={StaticResource Rgb2HexConverter}, ConverterParameter=Hello}" Foreground="{Binding ForegroundRgbCode, Mode=OneWay, Converter={StaticResource Rgb2HexConverter}}" Background="{Binding Text, RelativeSource={RelativeSource Self}}" IsReadOnly="True" Width="100" Height="100" Margin="10" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                <TextBox Text="{Binding RgbCode, Mode=OneWay, Converter={StaticResource Rgb2HexConverter}, ConverterParameter=Hello}" Foreground="{Binding RgbCode, Mode=OneWay, Converter={StaticResource Rgb2HexConverter}, ConverterParameter=Foreground}" Background="{Binding Text, RelativeSource={RelativeSource Self}}" IsReadOnly="True" Width="100" Height="100" Margin="10" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
             </Grid>
             <StackPanel Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Margin="0,10,10,10">
                 <DockPanel Margin="0,0,0,10">

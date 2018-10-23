@@ -14,6 +14,10 @@ namespace ColorPicker.Converters
 
             switch (parameter as string)
             {
+                case "Foreground":
+                    color = GetForegroundRgbCode(color);
+                    goto default;
+
                 case "R":
                 case nameof(color.Red):
                     return $"#{color.Red:X2}0000";
@@ -30,6 +34,18 @@ namespace ColorPicker.Converters
                     return $"#{color.Red:X2}{color.Green:X2}{color.Blue:X2}";
             }
 
+        }
+        
+        private RGBCode GetForegroundRgbCode(RGBCode color)
+        {
+            float r = color.Red / 255f;
+            float g = color.Green / 255f;
+            float b = color.Blue / 255f;
+            float brightness = (0.2126f * r + 0.7152f * g + 0.0722f * b);
+
+            return brightness < 0.75f
+                ? new RGBCode(255, 255, 255)
+                : new RGBCode(47, 79, 79);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
