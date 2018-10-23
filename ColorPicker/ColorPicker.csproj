@@ -66,6 +66,10 @@
     <Compile Include="Commands\AddColorCommand.cs" />
     <Compile Include="Converters\RGB2RGBConverter.cs" />
     <Compile Include="Converters\RGB2HexConverter.cs" />
+    <Compile Include="Migrations\201810231823188_Initial.cs" />
+    <Compile Include="Migrations\201810231823188_Initial.Designer.cs">
+      <DependentUpon>201810231823188_Initial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ColorDbContext.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
@@ -98,6 +102,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\201810231823188_Initial.resx">
+      <DependentUpon>201810231823188_Initial.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
